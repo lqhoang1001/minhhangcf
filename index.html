@@ -36,16 +36,16 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .left img.avatar {
-      width: 50vh;
-      height: 50vh;
+      width: 60vh;
+      height: 60vh;
       border-radius: 50%;
       margin-top: 20px;
-      border: 6px solid #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: 8px solid #fff;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
       object-fit: cover;
     }
     .invitation {
-      font-size: 48px;
+      font-size: 52px;
       color: #b94e7d;
       font-weight: bold;
       margin-top: 10px;
@@ -92,6 +92,7 @@
       right: 10px;
       opacity: 0.4;
       max-width: 150px;
+      animation: sway 4s ease-in-out infinite;
     }
     .decor-top-left,
     .decor-top-right,
@@ -128,6 +129,18 @@
       50% { transform: translateY(-10px); }
       100% { transform: translateY(0px); }
     }
+    @keyframes sway {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(3deg); }
+      100% { transform: rotate(0deg); }
+    }
+    .frame-border {
+      border: 4px dotted #ffb6c1;
+      border-radius: 20px;
+      padding: 10px;
+      margin: 10px;
+      box-shadow: 0 0 12px rgba(255,182,193,0.5);
+    }
   </style>
 </head>
 <body>
@@ -142,8 +155,8 @@
 
   <div class="left">
     <div class="invitation">Thư mời đi Coffee</div>
-    <img class="avatar" src="avatar" alt="Avatar">
-    <img class="main-image" src="https://via.placeholder.com/400x300.png?text=H%C3%ACnh+Hai+Ch%C3%BAng+Ta" alt="Hình của chúng tôi">
+    <img class="avatar" src="3034515d-1a1d-41b7-9edf-f07470eb62b5.png" alt="Avatar">
+    <img class="main-image frame-border" src="https://via.placeholder.com/400x300.png?text=H%C3%ACnh+Hai+Ch%C3%BAng+Ta" alt="Hình của chúng tôi">
   </div>
   <div class="right">
     <div class="tab">
