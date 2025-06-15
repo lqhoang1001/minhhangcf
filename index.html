@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thư mời đi Coffee - Minh Hằng</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Pacifico', cursive;
+      background-color: #ffeef5;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .left, .right {
+      width: 50%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .left {
+      background-color: #ffd6e8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      position: relative;
+      border-right: 10px dashed #ffc1da;
+    }
+    .left img.main-image {
+      max-width: 80%;
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .left img.avatar {
+      width: 50vh;
+      height: 50vh;
+      border-radius: 50%;
+      margin-top: 20px;
+      border: 6px solid #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      object-fit: cover;
+    }
+    .invitation {
+      font-size: 48px;
+      color: #b94e7d;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .right {
+      background-color: #fff0f6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .yes {
+      background-color: #ff94c2;
+      color: white;
+    }
+    .no {
+      background-color: #cccccc;
+      color: white;
+      position: absolute;
+    }
+    .tab {
+      background-color: #ffe0eb;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border: 2px dashed #ffb6c1;
+    }
+    .flowers {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      opacity: 0.4;
+      max-width: 150px;
+    }
+    .decor-top-left,
+    .decor-top-right,
+    .decor-bottom-left,
+    .decor-bottom-right {
+      position: absolute;
+      width: 100px;
+      opacity: 0.6;
+      z-index: 1;
+      animation: float 6s ease-in-out infinite;
+    }
+    .decor-top-left {
+      top: 0;
+      left: 0;
+      animation-delay: 0s;
+    }
+    .decor-top-right {
+      top: 0;
+      right: 0;
+      animation-delay: 1s;
+    }
+    .decor-bottom-left {
+      bottom: 0;
+      left: 0;
+      animation-delay: 2s;
+    }
+    .decor-bottom-right {
+      bottom: 0;
+      right: 0;
+      animation-delay: 3s;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3c4204d7e1.mp3?filename=lazy-day-110997.mp3" type="audio/mpeg">
+  </audio>
+
+  <img class="decor-top-left" src="https://cdn.pixabay.com/photo/2016/03/31/18/37/flower-1294173_1280.png" alt="decor">
+  <img class="decor-top-right" src="https://cdn.pixabay.com/photo/2016/03/31/18/37/flower-1294173_1280.png" alt="decor">
+  <img class="decor-bottom-left" src="https://cdn.pixabay.com/photo/2017/01/31/21/23/pink-2025545_1280.png" alt="decor">
+  <img class="decor-bottom-right" src="https://cdn.pixabay.com/photo/2017/01/31/21/23/pink-2025545_1280.png" alt="decor">
+
+  <div class="left">
+    <div class="invitation">Thư mời đi Coffee</div>
+    <img class="avatar" src="avatar" alt="Avatar">
+    <img class="main-image" src="https://via.placeholder.com/400x300.png?text=H%C3%ACnh+Hai+Ch%C3%BAng+Ta" alt="Hình của chúng tôi">
+  </div>
+  <div class="right">
+    <div class="tab">
+      <p>Chào em Minh Hằng,</p>
+      <p>Anh là <strong>Lê Quang Hoàng</strong>. Anh muốn mời em đi coffee để chúng ta có thể cùng nhau lên kế hoạch học hát, cũng như dành thời gian để healing và giải trí sau kỳ thi THPTQG.</p>
+      <p><strong>Ngày đi:</strong> Sau khi em thi xong THPTQG (Nếu em không thi tốt, anh sẽ cancel lời mời để em nghỉ ngơi nha 🥺)</p>
+    </div>
+
+    <div class="button-group">
+      <button class="yes" onclick="alert('Thật tuyệt khi em sẽ đi với anh 🥰')">Yes</button>
+      <button class="no" id="noBtn">No</button>
+    </div>
+    <img class="flowers" src="https://png.pngtree.com/png-clipart/20220420/ourmid/pngtree-flower-clipart-hand-painted-simple-small-flower-png-image_4562074.png" alt="Decor hoa">
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    noBtn.addEventListener('mouseover', () => {
+      const maxX = window.innerWidth / 2 - 100;
+      const maxY = window.innerHeight - 100;
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
+    });
+  </script>
+</body>
+</html>
