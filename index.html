@@ -9,10 +9,11 @@
     body {
       margin: 0;
       font-family: 'Pacifico', cursive;
-      background-color: #ffeef5;
+      background-color: #fff5f8;
       display: flex;
       height: 100vh;
       overflow: hidden;
+      position: relative;
     }
     .left, .right {
       width: 50%;
@@ -36,19 +37,21 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .left img.avatar {
-      width: 60vh;
-      height: 60vh;
+      width: 80vh;
+      height: 80vh;
       border-radius: 50%;
       margin-top: 20px;
-      border: 8px solid #fff;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+      border: 12px solid #ffe4f1;
       object-fit: cover;
+      position: relative;
+      z-index: 2;
     }
     .invitation {
       font-size: 52px;
       color: #b94e7d;
       font-weight: bold;
       margin-top: 10px;
+      z-index: 3;
     }
     .right {
       background-color: #fff0f6;
@@ -86,60 +89,61 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       border: 2px dashed #ffb6c1;
     }
-    .flowers {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      opacity: 0.4;
-      max-width: 150px;
-      animation: sway 4s ease-in-out infinite;
-    }
-    .decor-top-left,
-    .decor-top-right,
-    .decor-bottom-left,
-    .decor-bottom-right {
-      position: absolute;
-      width: 100px;
-      opacity: 0.6;
-      z-index: 1;
-      animation: float 6s ease-in-out infinite;
-    }
-    .decor-top-left {
-      top: 0;
-      left: 0;
-      animation-delay: 0s;
-    }
-    .decor-top-right {
-      top: 0;
-      right: 0;
-      animation-delay: 1s;
-    }
-    .decor-bottom-left {
-      bottom: 0;
-      left: 0;
-      animation-delay: 2s;
-    }
-    .decor-bottom-right {
-      bottom: 0;
-      right: 0;
-      animation-delay: 3s;
-    }
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-    @keyframes sway {
-      0% { transform: rotate(0deg); }
-      50% { transform: rotate(3deg); }
-      100% { transform: rotate(0deg); }
-    }
     .frame-border {
       border: 4px dotted #ffb6c1;
       border-radius: 20px;
       padding: 10px;
       margin: 10px;
       box-shadow: 0 0 12px rgba(255,182,193,0.5);
+    }
+
+    .floating-heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/833/833472.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: float 10s infinite ease-in;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0); opacity: 1; }
+      50% { transform: translateY(-200px) rotate(180deg); opacity: 0.7; }
+      100% { transform: translateY(-400px) rotate(360deg); opacity: 0; }
+    }
+
+    .glow-ring {
+      position: absolute;
+      top: calc(50% - 45vh);
+      left: calc(50% - 45vh);
+      width: 90vh;
+      height: 90vh;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffe4f1 0%, #ffb6c1 70%, transparent 80%);
+      box-shadow: 0 0 30px 15px rgba(255, 192, 203, 0.6);
+      animation: pulse 3s infinite ease-in-out;
+      z-index: 1;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+    }
+
+    .cursor-flower {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/2880/2880510.png');
+      background-size: cover;
+      pointer-events: none;
+      animation: pop 0.5s ease-out forwards;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(1.2); opacity: 0; }
     }
   </style>
 </head>
@@ -148,14 +152,10 @@
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3c4204d7e1.mp3?filename=lazy-day-110997.mp3" type="audio/mpeg">
   </audio>
 
-  <img class="decor-top-left" src="https://cdn.pixabay.com/photo/2016/03/31/18/37/flower-1294173_1280.png" alt="decor">
-  <img class="decor-top-right" src="https://cdn.pixabay.com/photo/2016/03/31/18/37/flower-1294173_1280.png" alt="decor">
-  <img class="decor-bottom-left" src="https://cdn.pixabay.com/photo/2017/01/31/21/23/pink-2025545_1280.png" alt="decor">
-  <img class="decor-bottom-right" src="https://cdn.pixabay.com/photo/2017/01/31/21/23/pink-2025545_1280.png" alt="decor">
-
   <div class="left">
     <div class="invitation">Thư mời đi Coffee</div>
-    <img class="avatar" src="3034515d-1a1d-41b7-9edf-f07470eb62b5.png" alt="Avatar">
+    <div class="glow-ring"></div>
+    <img class="avatar" src="avatar.jpg" alt="Avatar">
     <img class="main-image frame-border" src="https://via.placeholder.com/400x300.png?text=H%C3%ACnh+Hai+Ch%C3%BAng+Ta" alt="Hình của chúng tôi">
   </div>
   <div class="right">
@@ -166,10 +166,9 @@
     </div>
 
     <div class="button-group">
-      <button class="yes" onclick="alert('Thật tuyệt khi em sẽ đi với anh 🥰')">Yes</button>
+      <button class="yes" onclick="alert('Cảm ơn em 💖')">Yes</button>
       <button class="no" id="noBtn">No</button>
     </div>
-    <img class="flowers" src="https://png.pngtree.com/png-clipart/20220420/ourmid/pngtree-flower-clipart-hand-painted-simple-small-flower-png-image_4562074.png" alt="Decor hoa">
   </div>
 
   <script>
@@ -181,6 +180,29 @@
       const randomY = Math.floor(Math.random() * maxY);
       noBtn.style.left = `${randomX}px`;
       noBtn.style.top = `${randomY}px`;
+    });
+
+    // Hiệu ứng trái tim nền
+    for (let i = 0; i < 40; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = (Math.random() * window.innerHeight + 100) + 'px';
+      heart.style.animationDelay = Math.random() * 10 + 's';
+      document.body.appendChild(heart);
+    }
+
+    // Hiệu ứng khi di chuột
+    document.addEventListener('mousemove', (e) => {
+      const flower = document.createElement('div');
+      flower.classList.add('cursor-flower');
+      flower.style.left = `${e.pageX - 15}px`;
+      flower.style.top = `${e.pageY - 15}px`;
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 500);
     });
   </script>
 </body>
