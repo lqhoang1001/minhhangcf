@@ -9,8 +9,9 @@
     body {
       margin: 0;
       font-family: 'Pacifico', cursive;
-      background-color: #fff5f8;
+      background-color: #fff0f5;
       display: flex;
+      flex-direction: row;
       height: 100vh;
       overflow: hidden;
       position: relative;
@@ -42,16 +43,16 @@
       border-radius: 50%;
       margin-top: 20px;
       border: 12px solid #ffe4f1;
+      box-shadow: 0 8px 20px rgba(255, 182, 193, 0.7);
       object-fit: cover;
       position: relative;
-      z-index: 2;
+      z-index: 1;
     }
     .invitation {
       font-size: 52px;
       color: #b94e7d;
       font-weight: bold;
       margin-top: 10px;
-      z-index: 3;
     }
     .right {
       background-color: #fff0f6;
@@ -64,6 +65,7 @@
     .button-group {
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
     button {
       padding: 12px 24px;
@@ -96,7 +98,6 @@
       margin: 10px;
       box-shadow: 0 0 12px rgba(255,182,193,0.5);
     }
-
     .floating-heart {
       position: absolute;
       width: 30px;
@@ -106,44 +107,65 @@
       background-repeat: no-repeat;
       animation: float 10s infinite ease-in;
       pointer-events: none;
-      z-index: 0;
     }
     @keyframes float {
       0% { transform: translateY(0) rotate(0); opacity: 1; }
       50% { transform: translateY(-200px) rotate(180deg); opacity: 0.7; }
       100% { transform: translateY(-400px) rotate(360deg); opacity: 0; }
     }
-
     .glow-ring {
       position: absolute;
-      top: calc(50% - 45vh);
-      left: calc(50% - 45vh);
       width: 90vh;
       height: 90vh;
       border-radius: 50%;
-      background: radial-gradient(circle, #ffe4f1 0%, #ffb6c1 70%, transparent 80%);
-      box-shadow: 0 0 30px 15px rgba(255, 192, 203, 0.6);
-      animation: pulse 3s infinite ease-in-out;
-      z-index: 1;
+      border: 3px dashed #ffcce0;
+      box-shadow: 0 0 20px #ffb6c1;
+      animation: pulse 2s infinite ease-in-out;
+      z-index: 0;
     }
     @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.8; }
+      0%, 100% { box-shadow: 0 0 10px #ffc0cb; }
+      50% { box-shadow: 0 0 25px #ff85a2; }
     }
-
     .cursor-flower {
       position: absolute;
       width: 30px;
       height: 30px;
-      background-image: url('https://cdn-icons-png.flaticon.com/512/2880/2880510.png');
+      background-image: url('https://cdn-icons-png.flaticon.com/512/766/766484.png');
       background-size: cover;
       pointer-events: none;
       animation: pop 0.5s ease-out forwards;
     }
-
     @keyframes pop {
       0% { transform: scale(0); opacity: 1; }
       100% { transform: scale(1.2); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+        height: auto;
+      }
+      .left, .right {
+        width: 100%;
+        border: none;
+        padding: 10px;
+      }
+      .left img.avatar {
+        width: 60vw;
+        height: 60vw;
+      }
+      .glow-ring {
+        width: 65vw;
+        height: 65vw;
+      }
+      .invitation {
+        font-size: 32px;
+      }
+      button {
+        font-size: 14px;
+        padding: 10px 18px;
+      }
     }
   </style>
 </head>
@@ -151,7 +173,6 @@
   <audio autoplay loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3c4204d7e1.mp3?filename=lazy-day-110997.mp3" type="audio/mpeg">
   </audio>
-
   <div class="left">
     <div class="invitation">Thư mời đi Coffee</div>
     <div class="glow-ring"></div>
@@ -164,7 +185,6 @@
       <p>Anh là <strong>Lê Quang Hoàng</strong>. Anh muốn mời em đi coffee để chúng ta có thể cùng nhau lên kế hoạch học hát, cũng như dành thời gian để healing và giải trí sau kỳ thi THPTQG.</p>
       <p><strong>Ngày đi:</strong> Sau khi em thi xong THPTQG (Nếu em không thi tốt, anh sẽ cancel lời mời để em nghỉ ngơi nha 🥺)</p>
     </div>
-
     <div class="button-group">
       <button class="yes" onclick="alert('Cảm ơn em 💖')">Yes</button>
       <button class="no" id="noBtn">No</button>
@@ -182,17 +202,15 @@
       noBtn.style.top = `${randomY}px`;
     });
 
-    // Hiệu ứng trái tim nền
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 30; i++) {
       const heart = document.createElement('div');
       heart.classList.add('floating-heart');
       heart.style.left = Math.random() * window.innerWidth + 'px';
       heart.style.top = (Math.random() * window.innerHeight + 100) + 'px';
-      heart.style.animationDelay = Math.random() * 10 + 's';
+      heart.style.animationDelay = Math.random() * 5 + 's';
       document.body.appendChild(heart);
     }
 
-    // Hiệu ứng khi di chuột
     document.addEventListener('mousemove', (e) => {
       const flower = document.createElement('div');
       flower.classList.add('cursor-flower');
